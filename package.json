@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm-run-all -p nodemon browsersync",
     "nodemon": "nodemon src/server.js",
-    "browsersync": "browser-sync start --proxy http://localhost:5006 --files 'public, ./src/app/views/parts, ./src/app/views'"
+    "browsersync": "browser-sync start --proxy http://localhost:5006 --files 'public,./src/app/views'"
   },
   "keywords": [],
   "author": "Douglas Fortes",

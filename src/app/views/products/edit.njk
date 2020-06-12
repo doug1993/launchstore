@@ -19,11 +19,11 @@
          <button class="button"type="submit" id="Update">Atualizar</button>
       </form>
 
-       <form action="/products?_method=DELETE" method="POST" >
-                  <input type="hidden" name="id" value="{{member.id}}">
+       <form action="/products?_method=DELETE" method="POST" id="form-delete" >
+                  <input type="hidden" name="id" value="{{product.id}}">
                   <div class="btn_CD"><button type="submit" class="button" id="Delete">deletar</button></div>     
       </form>
-   </section>
+   </section> 
    <script>
          const formDelete = document.querySelector("#form-delete")
          formDelete.addEventListener("submit",function(event){

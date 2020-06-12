@@ -2,8 +2,6 @@
      nunjucks = require('nunjucks')
      const routes = require('./routes')
      methodOverride= require('method-override')
-
-      
      
      server =express()
      //syntax do static esta diferente 
