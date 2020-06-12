@@ -1,0 +1,27 @@
+{
+  "name": "modulo_05",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "npm-run-all -p nodemon browsersync",
+    "nodemon": "nodemon src/server.js",
+    "browsersync": "browser-sync start --proxy http://localhost:5006 --files 'public, ./src/app/views/parts, ./src/app/views'"
+  },
+  "keywords": [],
+  "author": "Douglas Fortes",
+  "license": "MIT",
+  "dependencies": {
+    "browser-sync": "^2.26.7",
+    "express": "^4.17.1",
+    "git": "^0.1.5",
+    "method-override": "^3.0.0",
+    "node": "^13.13.0",
+    "nunjucks": "^3.2.1",
+    "pg": "^8.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3",
+    "npm-run-all": "^4.1.5"
+  }
+}
