@@ -5,7 +5,8 @@
 
    
     <section class="container-form">
-      <form  method="POST" action="/products?_method=PUT">
+    <!-- enctype eh uma forma de receber arquicos no backend -->
+      <form  method="POST" action="/products?_method=PUT " enctype="multipart/form-data">
 
          <div class="header">
           <h3>Editar Produto {{productId}} </h3>

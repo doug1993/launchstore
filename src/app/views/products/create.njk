@@ -4,7 +4,8 @@
 
    
     <section class="container-form">
-      <form  method="POST" action="/products">
+    <!-- enctype eh uma forma de receber arquicos no backend -->
+      <form  method="POST" action="/products" enctype="multipart/form-data">
 
          <div class="header">
           <h3>Cadastrar Produto {{productId}} </h3>
