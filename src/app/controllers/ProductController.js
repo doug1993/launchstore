@@ -23,6 +23,21 @@ module.exports={
             return res.send('Please, fill all fields')
          }
       }
+
+      if(req.files.length=="0"){
+         return res.send('Please, sent at least one image')
+      }
+         //create cria um array de promessas
+         const filesPromise =  req.files.map(file => File.create({...file, product_id: productId}))
+         //agora ele(Promise.all) pode esperar esse array 
+         await Promise.all(filesPromise)
+      //forEach nao espera a funcao await estar pronta
+      /*
+         req.files.forEach(file=>{
+         await File.create({...file, product_id: productId})
+
+      })*/
+
       let results = await Product.create(req.body)
      const productId = results.rows[0].id 
 
