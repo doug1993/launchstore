@@ -252,3 +252,62 @@ section.container-form h3{
 }
  #photos-preview  .photo i:hover {
    opacity: 1;}
+   /*-->SHOP<--*/
+.shop .items{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+
+   flex-direction: column;
+   justify-content: bottom;
+}
+.shop .items .product{
+
+   margin-top: 24px;
+   padding: 8px;
+   max-width: 250px;
+   max-height: 500px;
+}
+.shop .items .product .image{
+   margin-left: 4px;
+   max-width: 250px;
+   min-height: 340px;
+}
+.shop .items .product .image img{
+   margin-left: 4px;
+   max-width: 95%;
+}
+
+.shop .items .product .old-price{
+   width: 95%;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   margin-left: -40px;
+   color: red;
+  text-decoration: line-through;
+}
+
+.shop .items .product .pro-des p {
+   width: 95%;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   font-size: 24px;
+   
+}
+
+.shop .items .product .pro-des  h4{
+   width: 95%;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   text-transform: uppercase;
+   color: #9999;
+   
+}
+
+.shop .items .product a{
+   padding: 4px;
+   width: 95%;
+   
+}
