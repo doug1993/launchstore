@@ -1,0 +1,68 @@
+{% extends "layout.njk" %}
+{% block content %}
+
+
+   <section class="search-products">
+   
+     <aside>
+      <div class="header">
+          <h2>Computador</h2>
+          <p>12 encontrados</p>
+      </div>
+      <nav class="categories">
+         <h4>Categorias</h4>
+         <ul>
+            <li><a href="#"></a>Eletronicos</li>
+            <li><a href="#">Comida</a></li>
+         </ul>
+      </nav>
+     </aside>
+
+      <div class="items">
+      
+         {% for product in products %}
+         
+            <div class="product">
+         
+               <div class="image">
+                  <img src="{{product.img if product.img else '//placehold.it/250x350'}}" alt="{{image.name}}" >
+               </div> 
+                 
+               {% if product.old_price != product.price %}
+                  <div class="old-price">
+                   <p>{{product.old_price}}</p>
+                  </div>
+                  {% else %}
+                  <div class="old-price">
+                   <p>first price</p>
+                  </div>
+               {% endif %}
+                
+                  
+            
+           
+
+              
+               <div class="pro-des">
+                
+                  <p>{{product.price}}</p>
+                  <h4>{{product.name}}</h4>
+               </div>
+                
+                  <a href="/products/{{product.id}}/edit" class="button"> Ver Produtos</a>
+
+            </div>
+         
+         {% endfor %}
+      
+      </div>
+   
+   
+   
+   
+   
+   
+   
+   </section>
+
+{% endblock %}
