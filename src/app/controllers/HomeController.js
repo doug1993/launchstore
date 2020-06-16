@@ -12,9 +12,7 @@ module.exports={
       async function getImage(productId){
             let results = await Product.files(productId)
             const files = results.rows.map(file => `${req.protocol}://${req.headers.host}/${file.path.replace(" \ ", " / ")}`,)
-            
-
-            console.log(' files')
+         
             return files[0]
       }
       const productsPromise = products.map(async product =>{
