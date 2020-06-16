@@ -1,10 +1,10 @@
 <div class="item">
    <div>Categoria</div>
-   <div>
+   <div class="select">
       <select name="category_id">
 
          {% for category in categories %}
-         <option value="{{category.id}}"{% if products.category_id == category.id  %}selected{% endif %}>
+         <option value="{{category.id}}"{% if products.category_id == category.id %}selected{% endif %}>
             {{category.name}}
          </option>
          {% endfor %}

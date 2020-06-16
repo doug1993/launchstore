@@ -64,7 +64,7 @@ module.exports={
 
 
      
-     return res.render('products/edit.njk', {product, files})
+     return res.render('products/edit.njk', {product, categories, files})
    },
    async put(req,res){
       const keys = Object.keys(req.body)
@@ -104,7 +104,8 @@ module.exports={
       await Product.delete(req.body.id)
 
       return res.redirect('/products/create')
-  },async show(req,res) {
+  },
+   async show(req,res) {
 
    let results = await Product.find(req.params.id)
    const product = results.rows[0]
@@ -129,6 +130,6 @@ module.exports={
 
 
    return res.render("products/show", { product, files })
-}
+   }
 
 } 
