@@ -39,7 +39,7 @@ CREATE TABLE "users" (
   "name" int NOT NULL ,
   "email" text UNIQUE NOT NULL ,
   "password" text NOT NULL,
-  "cpf_cnpj" int UNIQUE NOT NULL,
+  "cpf_cnpj" text UNIQUE NOT NULL,
   "cep" text,
   "addres" text,
   "created_at" timestamp DEFAULT (now()),
