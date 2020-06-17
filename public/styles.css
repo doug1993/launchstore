@@ -424,3 +424,9 @@ section.container-form h3{
    box-shadow: 0.4px 0.4px 12px  rgba(60, 60, 60, .4);
    border-radius: 12px;
 }
+/*VALIDATE ERROR*/
+.input .error{
+   color: rgba(250, 14, 14, 0.8);
+   margin-left: 14px;
+   font-style: italic;
+}
