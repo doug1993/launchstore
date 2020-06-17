@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}
+        <title> Launchstore </title>
+    {% endblock %}
+<link rel="stylesheet" href="/public/styles.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"> 
+</head>
+<body>
+   {% include "./parts/header.njk"%}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% include "./parts/footer.njk"%}
+ <script src="../../../public/scripts.js"></script>
+ </body>
+</html>
