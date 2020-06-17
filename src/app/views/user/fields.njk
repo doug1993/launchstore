@@ -1,6 +1,6 @@
 <div class="item">
    <div>Nome Completo</div>
-   <div>
+   <div class="input">
       <input type="text"
       name="name" placeholder="Por favor digite seu Nome Completo"
       value="{{user.name}}">
@@ -10,16 +10,16 @@
 
 <div class="item">
    <div>Email</div>
-      <div>
+      <div class="input">
          <input type="email"
-         name="email" placeholder="Por favor seu email aqui
+         name="email" placeholder="Por favor seu email aqui"
          value="{{user.email}}">
       </div>
 </div> 
 
 <div class="item">
    <div>Senha</div>
-      <div>
+      <div class="input">
          <input type="password" 
          name="pasword" placeholder="Escolha uma senha"
          value="{{user.password}}">
@@ -29,7 +29,7 @@
 {% if not user.id %}
       <div class="item">
          <div>Repetir Senha</div>
-            <div>
+            <div class="input">
                <input type="password"
                name="paswordRepeat" placeholder="Repita a senha escolhida"
                >
@@ -39,26 +39,28 @@
 
 <div class="item">
    <div>CPf ou CNPJ</div>
-      <div>
+      <div class="input">
          <input type="text" 
          name="cpf_cnpj" placeholder="Por favor CPF ou CNPJ"
-         value="{{user.cpf_cnpj}}">
+         value="{{user.cpf_cnpj}}"
+         onkeydown="Mask.apply(this,'cpfCnpj')">
       </div>
 
 </div> 
 
 <div class="item">
    <div>CEP</div>
-      <div>
+      <div class="input">
          <input type="text" 
          name="cep" placeholder="Cep :99999-999"
-         value="{{user.cep}}">
+         value="{{user.cep}}"
+         onkeydown="Mask.apply(this,'cep')">
       </div>
 
 </div> 
 <div class="item">
    <div>Endereco Completo</div>
-      <div>
+      <div class="input">
          <input type="text" 
          name="addres" placeholder="Por favor digite seu Endereco"
          value="{{user.addres}}">

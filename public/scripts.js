@@ -11,7 +11,37 @@
          style:'currency',
          currency:'BRL'
       }).format(value/100)
+    },
+    cpfCnpj(value){
+      value = value.replace(/\D/g,"")
+
+      if(value.length > 11){
+
+         //11223344556677
+         value = value.replace(/(\d{2})(\d)/, "$1.$2")
+         //11.223344556677
+         value =value.replace(/(\d{3})(\d)/, "$1.$2")
+         //'11.223.344556677'
+         value =value.replace(/(\d{3})(\d)/, "$1/$2")
+         //'11.223.344/556677'
+         value =value.replace(/(\d{4})(\d)/, "$1-$2")
+         //'11.223.344/5566-77'
+      }else{
+         value =value.replace(/(\d{3})(\d)/, "$1.$2")
+         value =value.replace(/(\d{3})(\d)/, "$1.$2")
+         value =value.replace(/(\d{3})(\d)/, "$1-$2")
+
+      }
+
+      return value
+    },
+    cep(value){
+       if (value.length>5){
+          value =value.replace(/(\d{5})(\d)/, "$1-$2")
+         }
+         return value
     }
+    
  }
  
  
