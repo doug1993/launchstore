@@ -19,10 +19,17 @@ const user = await User.findOne({
         where: {email},
         or:{cpf_cnpj}
   })
-  if ( user) return res.send('Users exists')
+  if ( user) return res.render('user/register',{
+     user: req.body,   
+     error: 'Usuario ja cadastrado'
+  })
 
-  if(password != passwordRepeat) return res.send('Password Mismatch')
+  if( password != passwordRepeat) return res.render('user/register',{
+         user: req.body,
+         error: 'Senha e repeticao sao diferentes'
+   })
+   
 
-  next()
+next()
 }
 module.exports = {post}

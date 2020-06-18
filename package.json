@@ -13,6 +13,7 @@
   "author": "Douglas Fortes",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "browser-sync": "^2.26.7",
     "express": "^4.17.1",
     "git": "^0.1.5",
