@@ -22,7 +22,13 @@
    <div>Senha</div>
       <div class="input">
          <input type="password" 
-         name="password" placeholder="Escolha uma senha"
+            name="password" 
+            {% if not user.id %}
+               placeholder="Escolha uma senha"
+            {% else%}
+               placeholder="Digite sua nova senha para atualizar"
+            {% endif%}
+         
          value="{{user.password}}">
       </div>
 </div> 

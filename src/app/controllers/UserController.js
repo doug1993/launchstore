@@ -1,25 +1,18 @@
 const User = require('../models/User')
 const { formatCep, formatCpfCnpj } = require('../../../lib/utils')
+const { update } = require('../models/Product')
+const user = require('../validators/user')
 
 module.exports = {
       registerForm(req,res){
             return res.render("user/register")
       },
       async show(req,res){ 
-            const {userId: id} = req.session
-
-            const user = await User.findOne({ where: {id} })
-
-            if(!user) return res.render("user/register", {
-                        error: 'Usuario nao encontrado'
-                  })
-            
+            const {user} = req
+              
             user.cpf_cnpj = formatCpfCnpj(user.cpf_cnpj)
             user.cep = formatCep(user.cep)
-           
-
-
-
+   
             return res.render('user/index', {user})
       },
       
@@ -32,5 +25,30 @@ module.exports = {
             return res.redirect('/users')
 
           //check if password match
+      },
+      async update(req,res){
+            try { const {user} =req
+                  let { name, email, cpf_cnpj, cep, address}= req.body
+                  cpf_cnpj = cpf_cnpj.replace(/\D/g,"")
+                  cep = cep.replace(/\D/g,"")
+                  await User.update(user.id, {
+                        name,
+                        email,
+                        cpf_cnpj,
+                        cep,
+                        address
+                  })
+                  return res.render("user/index",{
+                        succes: "Conta atualizada com sucesso!!"
+                  })
+                  
+            } catch (err) {
+                  console.error(err)
+                  return res.render("user/index",{
+                        error: "algum erro ocorreu"
+
+                  })
+                  
+            }
       }
 }  

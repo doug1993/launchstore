@@ -61,12 +61,8 @@ $$LANGUAGE plpgsql;
    BEFORE UPDATE ON products
    FOR EACH ROW
    EXECUTE PROCEDURE trigger_set_timestamp();
-    --auto updates_at users 
+    
 
-   CREATE TRIGGER set_timestamp 
-   BEFORE UPDATE ON users
-   FOR EACH ROW
-   EXECUTE PROCEDURE trigger_set_timestamp();
 
    --node connect-pg-simple
 CREATE TABLE "session" (
