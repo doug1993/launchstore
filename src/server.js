@@ -2,12 +2,15 @@
      nunjucks = require('nunjucks')
      const routes = require('./routes')
      methodOverride= require('method-override')
+     const session= require('./config/session')
      
-     server =express()
+     const server = express()
      //syntax do static esta diferente 
+     server.use(session)
      server.use(express.urlencoded({extended: true}))
-     server.use(methodOverride('_method'))
      server.use('/public',express.static('public'))
+     server.use(methodOverride('_method'))
+    
      //onde se configura a sobreescrita de method
      server.use(routes)
      
