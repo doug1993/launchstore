@@ -4,7 +4,7 @@
 const {hash}= require('bcryptjs')
 
  module.exports={
-    async findOne(filters){
+   async findOne(filters){
        let query ="SELECT * FROM users"
 
        Object.keys(filters).map(key =>{
@@ -56,7 +56,20 @@ const {hash}= require('bcryptjs')
    },
    async  update(id,fields){
       let query = 'UPDATE users SET'
+      /*Esta linha refere-se a casda campo no array fields na pagina de update da aplicacao 
+         esta passando cada um deles para um query 
+         ex:
+        
+         UPDATE products SET
+               name=($1),
+               email=($1),
+               cpf_cnpj=($1),
+               cep=($1),
+               address=($1)`
+         WHERE id =$9 
 
+         reparando como nao tem  virgula no ultimo que eh a logica utilizada a baixo
+      */
       Object.keys(fields).map((key, index, array)=>{
          if((index + 1)<array.length){
             query = `${query}

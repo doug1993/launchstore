@@ -66,7 +66,7 @@ next()
 async function update(req,res,next){
    const fillAllFields = checAllFields(req.body)
    
-   if(fillAllfields){
+   if(fillAllFields){
       return res.render("user/index", fillAllFields)
    }
    const {id, password} = req.body
