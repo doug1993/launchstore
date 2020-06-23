@@ -1,7 +1,7 @@
 const User = require('../models/User')
 const { compare } = require('bcryptjs')
 
-function checAllFields(body){
+function checkAllFields(body){
    const keys = Object.keys(body)
 
    for(key of keys){
@@ -23,12 +23,13 @@ async function show(req, res, next){
             error: 'Usuario nao encontrado'
       })
       req.user = user
-                  next()
+
+      next()
 }
 
 async function post( req, res, next){
 
-   const fillAllFields = checAllFields(req.body)
+   const fillAllFields = checkAllFields(req.body)
 
    if(fillAllFields){
       return res.render("user/register", fillAllFields)
@@ -50,6 +51,7 @@ const user = await User.findOne({
         where: {email},
         or:{cpf_cnpj}
   })
+  
   if ( user) return res.render('user/register',{
      user: req.body,   
      error: 'Usuario ja cadastrado'
@@ -58,13 +60,13 @@ const user = await User.findOne({
   if( password != passwordRepeat) return res.render('user/register',{
          user: req.body,
          error: 'Senha e repeticao sao diferentes'
-   })
+   }) 
    
 
 next()
 }
 async function update(req,res,next){
-   const fillAllFields = checAllFields(req.body)
+   const fillAllFields = checkAllFields(req.body)
    
    if(fillAllFields){
       return res.render("user/index", fillAllFields)
@@ -76,11 +78,13 @@ async function update(req,res,next){
       error: " coloque sua senha para atualizar"
    })
    const user = await User.findOne({where: {id}})
-   const passed = await compare( password)
-    if (!passed)return res.render("user/index",{
+
+   const passed = await compare(password, user.password)
+   
+    if (!passed)return res.render("user/index",{    
        user: req.body,
        error: " senha incorreta"
-    })
+    }) 
     req.user = user
 
     next()

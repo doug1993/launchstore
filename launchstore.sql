@@ -26,9 +26,19 @@ CREATE TABLE "files" (
   "path" text,
   "product_id" int 
 );
+
+
 INSERT INTO categories(name)VALUES('comida')
 INSERT INTO categories(name)VALUES('eletronicos')
 INSERT INTO categories(name)VALUES('automoveis')
+
+
+CREATE TABLE "files" (
+  "id" SERIAL PRIMARY KEY,
+  "name" text,
+  "path" text NOT NULL,
+  "product_id" int
+);
 
 ALTER TABLE "products" ADD FOREIGN KEY ("category_id") REFERENCES "categories" ("id");
 
@@ -41,7 +51,7 @@ CREATE TABLE "users" (
   "password" text NOT NULL,
   "cpf_cnpj" text UNIQUE NOT NULL,
   "cep" text,
-  "addres" text,
+  "address" text,
   "created_at" timestamp DEFAULT (now()),
   "updated_at" timestamp DEFAULT (now())
 );

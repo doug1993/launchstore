@@ -1,7 +1,8 @@
 const User = require('../models/User')
 const { formatCep, formatCpfCnpj } = require('../../../lib/utils')
-const { update } = require('../models/Product')
-const user = require('../validators/user')
+
+
+
 
 module.exports = {
       registerForm(req,res){
@@ -32,7 +33,7 @@ module.exports = {
 
                   cpf_cnpj = cpf_cnpj.replace(/\D/g,"")
                   cep = cep.replace(/\D/g,"")
-                  
+                  ~
                   await User.update(user.id, {
                         name,
                         email,
@@ -41,7 +42,8 @@ module.exports = {
                         address
                   })
                   return res.render("user/index",{
-                        succes: "Conta atualizada com sucesso!!"
+                        user: req.body, 
+                        success: "Conta atualizada com sucesso!!"
                   })
                   
             } catch (err) {
@@ -52,5 +54,22 @@ module.exports = {
                   })
                   
             }
+      },
+      async delete(req, res) {
+          try {
+              await User.delete(req.body.id)
+              req.session.destroy()
+  
+              return res.render("user/register", {
+                  success: "Conta deletada com sucesso!"
+              })
+  
+          }catch(err) {
+              console.error(err)
+              return res.render("user/index", {
+                  user: req.body,
+                  error: "Erro ao tentar deletar sua conta!"
+              })
+          }
       }
 }  

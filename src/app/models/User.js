@@ -1,7 +1,10 @@
  const db = require('../../config/db')
+ 
+ const fs = require('fs')
 
 //extracao do hash do bcrypt para senhas
 const {hash}= require('bcryptjs')
+
 
  module.exports={
    async findOne(filters){
@@ -32,10 +35,11 @@ const {hash}= require('bcryptjs')
                   password,
                   cpf_cnpj,
                   cep,
-                  addres
+                  address
                ) VALUES ($1,$2,$3,$4,$5,$6)
                RETURNING id
-            ` //utilizando o hash do bcrypt criptografia
+            `
+             //utilizando o hash do bcrypt criptografia
             const passwordHash = await hash(data.password, 8)
                const values=[
                      data.name,
@@ -44,7 +48,7 @@ const {hash}= require('bcryptjs')
                      passwordHash,
                      data.cpf_cnpj.replace(/\D/g, ""),
                      data.cep.replace(/\D/g, ""),
-                     data.addres
+                     data.address
                ]
          
                const results = await db.query(query, values)
@@ -73,7 +77,7 @@ const {hash}= require('bcryptjs')
       Object.keys(fields).map((key, index, array)=>{
          if((index + 1)<array.length){
             query = `${query}
-               ${key}= ' ${fields[key]}'
+               ${key}= ' ${fields[key]}',
             `
          }else{
             query = `${query}
@@ -85,7 +89,32 @@ const {hash}= require('bcryptjs')
 
       await db.query(query)
       return
-   }
+   },async delete(id) {
+      //pegar todos os produtos
+      let results = await db.query("SELECT * FROM products WHERE user_id = $1", [id])
+      const products = results.rows
+
+      // dos produtos, pegar todas as imagens
+      const allFilesPromise = products.map(product => 
+          Product.files(product.id))
+
+      let promiseResults = await Promise.all(allFilesPromise)
+
+      // rodar a remoção do usuário
+      await db.query('DELETE FROM users WHERE id = $1', [id])
+
+      // remover as imagens da pasta public
+      promiseResults.map(results => {
+          results.rows.map(file => {
+              try {
+                  fs.unlinkSync(file.path)
+              } catch(err) {
+                  console.error(err)
+              }
+
+          })
+      })
+  }
          
 
  }
