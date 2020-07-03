@@ -33,7 +33,7 @@ module.exports = {
 
                   cpf_cnpj = cpf_cnpj.replace(/\D/g,"")
                   cep = cep.replace(/\D/g,"")
-                  ~
+                  
                   await User.update(user.id, {
                         name,
                         email,

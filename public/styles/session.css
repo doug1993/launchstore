@@ -1,0 +1,24 @@
+ section.login,
+ section.password.container{
+  max-width: 440px;
+ }
+ section.login.fields{
+  margin-bottom:32px;
+ }
+ section.login div.footer ul.footer{
+  margin-top: 44px;
+  display: flex;
+  justify-content: space-evenly;
+ 
+  font-weight: 600;
+
+ }
+ ul.footer li a{
+  color: black;
+ 
+ }
+ ul.footer li a:hover{
+  color:#fd951f;
+  }
+  .button.recover{  width: 250px }
+  

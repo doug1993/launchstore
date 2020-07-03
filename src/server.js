@@ -7,6 +7,11 @@
      const server = express()
      //syntax do static esta diferente 
      server.use(session)
+     server.use((req,res,next)=>{
+         res.locals.session = req.session
+        next()
+        })
+
      server.use(express.urlencoded({extended: true}))
      server.use('/public',express.static('public'))
      server.use(methodOverride('_method'))

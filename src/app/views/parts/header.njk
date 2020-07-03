@@ -28,11 +28,29 @@
                      Novo Anuncio
                </a>
             </li>
-            <li>
+            <li class="accounts">
                <a href="/accounts">
                   <i class="material-icons">account_circle</i>
                   Minha Conta
                </a>
+               {%if session.userId %}
+                  <ul class="submenu">
+                     <li>
+                        <a href="/users"> CONFIGURACOES </a>
+                     </li>
+                     <li>
+                        <a href="/buying">MEUS PEDIDOS</a>
+                     </li>
+                     <li>
+                        <a href="/selling">MINHAS VENDAS</a>
+                     </li>
+                     <li>
+                        <form action="/users/logout" method="POST">
+                           <button class="sub-menu">SAIR</button>
+                        </form>
+                     </li>
+                  </ul>
+               {% endif %}
             </li>
          </ul>
       </nav>
