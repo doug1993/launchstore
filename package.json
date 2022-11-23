@@ -12,7 +12,7 @@
   "author": "Douglas Fortes",
   "license": "MIT",
   "dependencies": {
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.27.10",
     "express": "^4.17.1",
     "git": "^0.1.5",
     "method-override": "^3.0.0",
